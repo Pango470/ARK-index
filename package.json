@@ -29,6 +29,11 @@
     "code-index",
     "agent-tooling"
   ],
+  "author": "Nicolas Ramsrud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nramsrud/ARK-index.git"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"

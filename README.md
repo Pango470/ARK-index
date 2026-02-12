@@ -1,5 +1,9 @@
 # ARK-index
 
+[![CI](https://github.com/Nramsrud/ARK-index/actions/workflows/ci.yml/badge.svg)](https://github.com/Nramsrud/ARK-index/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node >= 18](https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+
 Standalone index builder extracted from ARK.
 
 `ARK-index` generates deterministic repository artifacts for agent workflows:
